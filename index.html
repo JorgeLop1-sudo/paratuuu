@@ -104,7 +104,7 @@
     </div>
 
     <script>
-        // Agregar más corazones flotantes de forma dinámica
+        
         document.addEventListener('DOMContentLoaded', function() {
             const body = document.querySelector('body');
             const heartsCount = 15;
@@ -126,20 +126,39 @@
                 body.appendChild(heart);
             }
             
-            // Efecto al hacer clic en los enlaces
+            
             const links = document.querySelectorAll('.text-card a');
+
+            // Crear un objeto con las redirecciones para cada enlace
+            const pageRedirects = {
+                'gracias.html': 'gracias.html',
+                'conocerte.html': 'conocerte.html', 
+                'porque-contigo.html': 'porque-contigo.html',
+                'significas.html': 'significas.html',
+                'planes.html': 'planes.html',
+                'futuro.html': 'futuro.html'
+            };
+
             links.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     
                     // Efecto visual al hacer clic
                     this.parentElement.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        this.parentElement.style.transform = '';
-                    }, 200);
                     
-                    // Aquí puedes agregar la redirección a las otras páginas
-                    // Por ejemplo: window.location.href = 'pagina1.html';
+                    // Obtener la página del data attribute
+                    const page = this.getAttribute('data-page');
+                    
+                    // Redireccionar después de la animación
+                    setTimeout(() => {
+                        if (page && pageRedirects[page]) {
+                            window.location.href = pageRedirects[page];
+                        } else {
+                            // Si no hay página definida, mostrar mensaje
+                            alert('Página en construcción 💕');
+                        }
+                    }, 300);
+
                 });
             });
         });
