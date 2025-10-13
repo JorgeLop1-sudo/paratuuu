@@ -23,7 +23,7 @@
     
     <div class="links-grid">
         <!-- Fila 1: Link - Foto - Link -->
-        <div class="link-card" >
+        <div class="link-card" data-page="gracias.html">
             <div class="text-card">
                 <a href="#" data-page="gracias.html">Gracias a ti</a>
             </div>
@@ -35,7 +35,7 @@
             </div>
         </div>
         
-        <div class="link-card">
+        <div class="link-card" data-page="conocerte.html">
             <div class="text-card">
                 <a href="#" data-page="conocerte.html">¿Cómo te conocí?</a>
             </div>
@@ -48,7 +48,7 @@
             </div>
         </div>
         
-        <div class="link-card">
+        <div class="link-card" data-page="porque-contigo.html">
             <div class="text-card">
                 <a href="#" data-page="porque-contigo.html">¿Por qué contigo?</a>
             </div>
@@ -61,7 +61,7 @@
         </div>
         
         <!-- Fila 3: Link - Foto - Link -->
-        <div class="link-card">
+        <div class="link-card" data-page="significas.html">
             <div class="text-card">
                 <a href="#" data-page="significas.html">¿Qué significas para mí?</a>
             </div>
@@ -73,7 +73,7 @@
             </div>
         </div>
         
-        <div class="link-card">
+        <div class="link-card" data-page="planes.html">
             <div class="text-card">
                 <a href="#" data-page="planes.html">Planesitos inolvidables</a>
             </div>
@@ -86,7 +86,7 @@
             </div>
         </div>
         
-        <div class="link-card">
+        <div class="link-card" data-page="futuro.html">
             <div class="text-card">
                 <a href="#" data-page="futuro.html">El futuro que imagino a tu lado</a>
             </div>
@@ -104,7 +104,6 @@
     </div>
 
     <script>
-        
         document.addEventListener('DOMContentLoaded', function() {
             const body = document.querySelector('body');
             const heartsCount = 15;
@@ -126,10 +125,7 @@
                 body.appendChild(heart);
             }
             
-            
-            const links = document.querySelectorAll('.text-card a');
-
-            // Crear un objeto con las redirecciones para cada enlace
+            // Configuración de enlaces - Versión mejorada para toda la tarjeta
             const pageRedirects = {
                 'gracias.html': '1Graciasati/gracias.html',
                 'conocerte.html': '2Comoteconoci/conocerte.html', 
@@ -139,27 +135,41 @@
                 'futuro.html': '6Elfuturoatulado/futuro.html'
             };
 
-            links.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
+            // Hacer toda la tarjeta clickeable
+            const linkCards = document.querySelectorAll('.link-card[data-page]');
+
+            linkCards.forEach(card => {
+                const page = card.getAttribute('data-page');
+                
+                card.style.cursor = 'pointer';
+                
+                card.addEventListener('click', function(e) {
+                    // Prevenir que se active dos veces si se hace clic en el enlace
+                    if (e.target.tagName === 'A') {
+                        e.preventDefault();
+                    }
                     
                     // Efecto visual al hacer clic
-                    this.parentElement.style.transform = 'scale(0.95)';
-                    
-                    // Obtener la página del data attribute
-                    const page = this.getAttribute('data-page');
+                    this.style.transform = 'scale(0.95)';
                     
                     // Redireccionar después de la animación
                     setTimeout(() => {
                         if (page && pageRedirects[page]) {
                             window.location.href = pageRedirects[page];
                         } else {
-                            // Si no hay página definida, mostrar mensaje
                             alert('Página en construcción 💕');
                         }
                     }, 300);
-
                 });
+
+                // También mantener funcionalidad individual del enlace por si acaso
+                const link = card.querySelector('.text-card a');
+                if (link) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        card.click(); // Disparar el evento de la tarjeta completa
+                    });
+                }
             });
         });
     </script>
