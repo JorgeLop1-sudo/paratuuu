@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿Cómo me enamoré de ti?</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-    <link href="index.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="heart">❤</div>
@@ -17,27 +17,97 @@
     <div class="container">
         <div class="content">
             <h1>¿Cómo me enamoré de ti?</h1>
-            
-            <div class="links-container">
-                <a href="#" class="link-item">Gracias a ti</a>
-                <a href="#" class="link-item">¿Cómo te conocí?</a>
-                <a href="#" class="link-item">¿Por qué contigo?</a>
-                <a href="#" class="link-item">¿Qué significas para mí?</a>
-                <a href="#" class="link-item">Planesitos inolvidables</a>
-                <a href="#" class="link-item">El futuro que imagino a tu lado</a>
-            </div>
-            
-            <div class="footer">
-                Hecho con ❤️ especialmente para ti
+            <p class="subtitle">Cada día descubro nuevas razones para amarte más</p>
+        </div>
+    </div>
+    
+    <div class="links-grid">
+        <!-- Fila 1: Link - Foto - Link -->
+        <div class="link-card">
+            <div class="text-card">
+                <a href="#">Gracias a ti</a>
             </div>
         </div>
+        
+        <div class="link-card">
+            <div class="photo-placeholder">
+                <span>Tu foto aquí</span>
+            </div>
+        </div>
+        
+        <div class="link-card">
+            <div class="text-card">
+                <a href="#">¿Cómo te conocí?</a>
+            </div>
+        </div>
+        
+        <!-- Fila 2: Foto - Link - Foto -->
+        <div class="link-card">
+            <div class="photo-placeholder">
+                <span>Tu foto aquí</span>
+            </div>
+        </div>
+        
+        <div class="link-card">
+            <div class="text-card">
+                <a href="#">¿Por qué contigo?</a>
+            </div>
+        </div>
+        
+        <div class="link-card">
+            <div class="photo-placeholder">
+                <span>Tu foto aquí</span>
+            </div>
+        </div>
+        
+        <!-- Fila 3: Link - Foto - Link -->
+        <div class="link-card">
+            <div class="text-card">
+                <a href="#">¿Qué significas para mí?</a>
+            </div>
+        </div>
+        
+        <div class="link-card">
+            <div class="photo-placeholder">
+                <span>Tu foto aquí</span>
+            </div>
+        </div>
+        
+        <div class="link-card">
+            <div class="text-card">
+                <a href="#">Planesitos inolvidables</a>
+            </div>
+        </div>
+        
+        <!-- Fila 4: Foto - Link - Foto -->
+        <div class="link-card">
+            <div class="photo-placeholder">
+                <span>Tu foto aquí</span>
+            </div>
+        </div>
+        
+        <div class="link-card">
+            <div class="text-card">
+                <a href="#">El futuro que imagino a tu lado</a>
+            </div>
+        </div>
+        
+        <div class="link-card">
+            <div class="photo-placeholder">
+                <span>Tu foto aquí</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        Hecho con ❤️ especialmente para ti
     </div>
 
     <script>
         // Agregar más corazones flotantes de forma dinámica
         document.addEventListener('DOMContentLoaded', function() {
             const body = document.querySelector('body');
-            const heartsCount = 10;
+            const heartsCount = 15;
             
             for (let i = 0; i < heartsCount; i++) {
                 const heart = document.createElement('div');
@@ -57,15 +127,15 @@
             }
             
             // Efecto al hacer clic en los enlaces
-            const links = document.querySelectorAll('.link-item');
+            const links = document.querySelectorAll('.text-card a');
             links.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     
                     // Efecto visual al hacer clic
-                    this.style.transform = 'scale(0.95)';
+                    this.parentElement.style.transform = 'scale(0.95)';
                     setTimeout(() => {
-                        this.style.transform = '';
+                        this.parentElement.style.transform = '';
                     }, 200);
                     
                     // Aquí puedes agregar la redirección a las otras páginas
