@@ -1,12 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gracias a ti</title>
+    <link rel="icon" type="image/png" href="../images/gatitoicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="porque-contigo.css">
 </head>
 <body>
-    <h1>¿Por que contigo?</h1>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    
+    <div class="container">
+        <div class="content">
+            <h1>¿Por qué contigo?</h1>
+            
+            <div class="main-content">
+ 
+                <div class="text-content">
+                    <div class="T-F">
+                        <div class="text-block">
+                            <p>
+                                Porque contigo todo tiene sentido.
+                            </p>
+                            <p>
+                                Porque desde que llegaste, mi vida se siente más ligera,
+                                más bonita, más llena de amor.
+                            </p>
+                            <p>
+                                Porque cuando estoy contigo, el tiempo pasa diferente...
+                                se vuelve más lindo, más cálido, como si el mundo entero
+                                se detuviera solo para nosotros dos.
+                            </p>
+                        </div>
+                        <div class="side-photos">
+                            <div class="photo-item">
+                                <span>Foto 1</span>
+                            </div>
+                            <div class="photo-item">
+                                <span>Foto 2</span>
+                            </div>
+                            <div class="photo-item">
+                                <span>Foto 3</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="F-T">
+                        <div class="side-photos">
+                            <div class="photo-item">
+                                <span>Foto 1</span>
+                            </div>
+                            <div class="photo-item">
+                                <span>Foto 2</span>
+                            </div>
+                            <div class="photo-item">
+                                <span>Foto 3</span>
+                            </div>
+                        </div>
+                        <div class="text-block">
+                            <p>
+                                Porque contigo todo tiene sentido.
+                            </p>
+                            <p>
+                                Porque desde que llegaste, mi vida se siente más ligera,
+                                más bonita, más llena de amor.
+                            </p>
+                            <p>
+                                Porque cuando estoy contigo, el tiempo pasa diferente...
+                                se vuelve más lindo, más cálido, como si el mundo entero
+                                se detuviera solo para nosotros dos.
+                            </p>
+                        </div>
+                    </div>
+                
+                </div>
+
+
+                
+            </div>
+            
+
+
+            <div class="additional-photo">
+                <span>Tu foto especial aquí</span>
+            </div>
+            
+            <a href="../index.html" class="back-button">Volver al Inicio</a>
+        </div>
+    </div>
+
+    <script>
+        // Agregar corazones flotantes
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.querySelector('body');
+            const heartsCount = 10;
+            
+            for (let i = 0; i < heartsCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤';
+                
+                // Posición aleatoria
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const delay = Math.random() * 5;
+                
+                heart.style.left = `${left}%`;
+                heart.style.top = `${top}%`;
+                heart.style.animationDelay = `${delay}s`;
+                
+                body.appendChild(heart);
+            }
+        });
+    </script>
 </body>
 </html>
