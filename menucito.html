@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<link>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Cómo me enamoré de ti?</title>
+    <link rel="icon" type="image/png" href="images/gatitoicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="menucito.css">
+</head>
+<body>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    
+    <div class="container">
+        <div class="content">
+            <h1>¿Cómo me enamoré de ti?</h1>
+            <p class="subtitle">Cada día descubro nuevas razones para amarte más</p>
+        </div>
+    </div>
+    
+    <div class="links-grid">
+        <!-- Fila 1: Link - Foto - Link -->
+        <div class="link-card" data-page="gracias.html">
+            <div class="text-card">
+                <a href="#" data-page="gracias.html">Gracias a ti</a>
+            </div>
+        </div>
+      
+        <div class="link-card">
+            <div class="photo-placeholder">
+                <span>Tu foto aquí</span>
+            </div>
+        </div>
+        
+        <div class="link-card" data-page="conocerte.html">
+            <div class="text-card">
+                <a href="#" data-page="conocerte.html">¿Cómo te conocí?</a>
+            </div>
+        </div>
+        
+        <!-- Fila 2: Foto - Link - Foto -->
+        <div class="link-card">
+            <div class="photo-placeholder">
+                <span>Tu foto aquí</span>
+            </div>
+        </div>
+        
+        <div class="link-card" data-page="porque-contigo.html">
+            <div class="text-card">
+                <a href="#" data-page="porque-contigo.html">¿Por qué contigo?</a>
+            </div>
+        </div>
+        
+        <div class="link-card">
+            <div class="photo-placeholder">
+                <span>Tu foto aquí</span>
+            </div>
+        </div>
+        
+        <!-- Fila 3: Link - Foto - Link -->
+        <div class="link-card" data-page="significas.html">
+            <div class="text-card">
+                <a href="#" data-page="significas.html">¿Qué significas para mí?</a>
+            </div>
+        </div>
+        
+        <div class="link-card">
+            <div class="photo-placeholder">
+                <span>Tu foto aquí</span>
+            </div>
+        </div>
+        
+        <div class="link-card" data-page="planes.html">
+            <div class="text-card">
+                <a href="#" data-page="planes.html">Planesitos inolvidables</a>
+            </div>
+        </div>
+        
+        <!-- Fila 4: Foto - Link - Foto -->
+        <div class="link-card">
+            <div class="photo-placeholder">
+                <span>Tu foto aquí</span>
+            </div>
+        </div>
+        
+        <div class="link-card" data-page="futuro.html">
+            <div class="text-card">
+                <a href="#" data-page="futuro.html">El futuro que imagino a tu lado</a>
+            </div>
+        </div>
+        
+        <div class="link-card">
+            <div class="photo-placeholder">
+                <span>Tu foto aquí</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        Hecho con ❤️ especialmente para ti
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.querySelector('body');
+            const heartsCount = 15;
+            
+            for (let i = 0; i < heartsCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤';
+                
+                // Posición aleatoria
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const delay = Math.random() * 5;
+                
+                heart.style.left = `${left}%`;
+                heart.style.top = `${top}%`;
+                heart.style.animationDelay = `${delay}s`;
+                
+                body.appendChild(heart);
+            }
+            
+            // Configuración de enlaces - Versión mejorada para toda la tarjeta
+            const pageRedirects = {
+                'gracias.html': '1Graciasati/gracias.html',
+                'conocerte.html': '2Comoteconoci/conocerte.html', 
+                'porque-contigo.html': '3Porquecontigo/porque-contigo.html',
+                'significas.html': '4Quesignificasparami/significas.html',
+                'planes.html': '5Planesitosinolvidables/planes.html',
+                'futuro.html': '6Elfuturoatulado/futuro.html'
+            };
+
+            // Hacer toda la tarjeta clickeable
+            const linkCards = document.querySelectorAll('.link-card[data-page]');
+
+            linkCards.forEach(card => {
+                const page = card.getAttribute('data-page');
+                
+                card.style.cursor = 'pointer';
+                
+                card.addEventListener('click', function(e) {
+                    // Prevenir que se active dos veces si se hace clic en el enlace
+                    if (e.target.tagName === 'A') {
+                        e.preventDefault();
+                    }
+                    
+                    // Efecto visual al hacer clic
+                    this.style.transform = 'scale(0.95)';
+                    
+                    // Redireccionar después de la animación
+                    setTimeout(() => {
+                        if (page && pageRedirects[page]) {
+                            window.location.href = pageRedirects[page];
+                        } else {
+                            alert('Página en construcción 💕');
+                        }
+                    }, 300);
+                });
+
+                // También mantener funcionalidad individual del enlace por si acaso
+                const link = card.querySelector('.text-card a');
+                if (link) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        card.click(); // Disparar el evento de la tarjeta completa
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
