@@ -29,17 +29,6 @@ body {
     margin-bottom: 40px;
 }
 
-.container::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
-    z-index: 0;
-}
-
 .content {
     position: relative;
     z-index: 1;
@@ -54,28 +43,51 @@ h1 {
     animation: fadeIn 1.5s ease-out;
 }
 
-.main-content {
+.text-image-container {
     display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    gap: 30px;
+    flex-direction: column;
+    gap: 40px;
     margin-bottom: 30px;
 }
 
-.side-photos {
+.text-image-row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.text-image-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.text-block {
+    flex: 1;
+    background: linear-gradient(135deg, #ffb6c1, #ff91a4);
+    padding: 30px;
+    border-radius: 15px;
+    color: white;
+    text-align: left;
+    line-height: 1.6;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.text-block p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.text-block p:last-child {
+    margin-bottom: 0;
+}
+
+.image-block {
     flex: 0 0 200px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: 20px;
 }
 
-.side-photos.right {
-    align-items: flex-end;
-}
-
-.photo-item {
+.image-item {
     width: 180px;
     height: 150px;
     display: flex;
@@ -91,55 +103,16 @@ h1 {
     transition: transform 0.3s ease;
 }
 
-.photo-item:hover {
-    transform: rotate(-1deg) scale(1.03);
-}
-
-.side-photos.right .photo-item {
+.text-image-row.reverse .image-item {
     transform: rotate(3deg);
 }
 
-.side-photos.right .photo-item:hover {
+.image-item:hover {
+    transform: rotate(-1deg) scale(1.03);
+}
+
+.text-image-row.reverse .image-item:hover {
     transform: rotate(1deg) scale(1.03);
-}
-
-.photo-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 15px;
-}
-
-.text-content {
-    flex: 1;
-    background: linear-gradient(135deg, #ffb6c1, #ff91a4);
-    padding: 30px;
-    border-radius: 15px;
-    color: white;
-    text-align: left;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 10px;
-}
-
-.text-block {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.text-block p {
-    margin: 0;
-    font-size: 1.1rem;
-}
-
-.T-F, .F-T{
-    display: flex;
-    flex-direction: row;
 }
 
 .additional-photo {
@@ -154,13 +127,6 @@ h1 {
     margin-top: 20px;
     transform: rotate(-1deg);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.additional-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 15px;
 }
 
 .back-button {
@@ -215,11 +181,11 @@ h1 {
 
 /* Responsive */
 @media (max-width: 1024px) {
-    .side-photos {
+    .image-block {
         flex: 0 0 180px;
     }
     
-    .photo-item {
+    .image-item {
         width: 160px;
         height: 130px;
     }
@@ -230,31 +196,26 @@ h1 {
         font-size: 2.8rem;
     }
     
-    .main-content {
+    .text-image-row, .text-image-row.reverse {
         flex-direction: column;
-        gap: 20px;
     }
     
-    .text-content {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .side-photos {
+    .image-block {
         flex: 0 0 auto;
         width: 100%;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: center;
         gap: 15px;
     }
     
-    .side-photos.right {
-        order: 3;
-    }
-    
-    .photo-item {
+    .image-item {
         width: 140px;
         height: 120px;
+        transform: none !important;
+    }
+    
+    .image-item:hover {
+        transform: scale(1.03) !important;
     }
     
     .container {
@@ -263,15 +224,16 @@ h1 {
     
     .additional-photo {
         height: 200px;
+        transform: none;
     }
 }
 
 @media (max-width: 600px) {
-    .side-photos {
+    .image-block {
         flex-wrap: wrap;
     }
     
-    .photo-item {
+    .image-item {
         width: 45%;
         max-width: 150px;
     }
@@ -286,11 +248,11 @@ h1 {
         padding: 15px;
     }
     
-    .photo-item, .additional-photo {
+    .image-item, .additional-photo {
         height: 120px;
     }
     
-    .text-content {
+    .text-block {
         padding: 20px;
     }
     
