@@ -64,7 +64,7 @@ h1 {
 }
 
 .side-photos {
-    flex: 0 0 200px;
+    flex: 0 0 220px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,9 +79,10 @@ h1 {
     min-height: 100%;
 }
 
+/* Tamaños fijos para todas las imágenes */
 .photo-item {
-    width: 180px;
-    height: 150px;
+    width: 200px;
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -150,15 +151,17 @@ h1 {
 .text-content .photo-item.standalone {
     margin: 20px auto;
     transform: none;
-    width: 180px;
-    height: 150px;
+    width: 200px;
+    height: 180px;
 }
 
 .text-content .photo-item.standalone:hover {
     transform: scale(1.03);
 }
 
+/* Tamaño fijo para la imagen adicional */
 .additional-photo {
+    width: 100%;
     height: 300px;
     display: flex;
     align-items: center;
@@ -170,6 +173,7 @@ h1 {
     margin-top: 20px;
     transform: rotate(-1deg);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
 }
 
 .back-button {
@@ -221,33 +225,34 @@ h1 {
     }
 }
 
+/* Media queries - manteniendo tamaños fijos en todos los dispositivos */
 @media (min-width: 1200px) {
     .side-photos {
         flex: 0 0 220px;
         justify-content: space-around;
     }
     
-    .side-photos .photo-item {
+    /* Mantener el mismo tamaño en pantallas grandes */
+    .side-photos .photo-item,
+    .text-with-photo .photo-item,
+    .text-content .photo-item.standalone {
         width: 200px;
-        height: 170px;
+        height: 180px;
     }
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
     .side-photos {
-        flex: 0 0 180px;
+        flex: 0 0 220px;
         justify-content: space-between;
     }
     
-    .side-photos .photo-item {
-        width: 160px;
-        height: 130px;
-    }
-    
+    /* Mantener el mismo tamaño en tablets */
+    .side-photos .photo-item,
     .text-with-photo .photo-item,
     .text-content .photo-item.standalone {
-        width: 160px;
-        height: 130px;
+        width: 200px;
+        height: 180px;
     }
 }
 
@@ -269,6 +274,7 @@ h1 {
         justify-content: center;
         gap: 15px;
         padding: 10px 0;
+        flex-wrap: wrap;
     }
     
     .side-photos.right {
@@ -276,37 +282,34 @@ h1 {
         height: auto;
     }
     
-    .photo-item {
-        width: 140px;
-        height: 120px;
-    }
-    
+    /* Mantener el mismo tamaño en móviles */
+    .side-photos .photo-item,
     .text-with-photo .photo-item,
     .text-content .photo-item.standalone {
-        width: 140px;
-        height: 120px;
+        width: 200px;
+        height: 180px;
     }
     
     .container {
         padding: 20px;
     }
     
+    /* Mantener tamaño fijo para la imagen adicional */
     .additional-photo {
-        height: 200px;
+        height: 300px;
     }
     
     .side-photos {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 15px;
         width: 100%;
         justify-items: center;
     }
     
     .side-photos .photo-item {
-        width: 100%;
-        max-width: 140px;
-        height: 120px;
+        width: 200px;
+        height: 180px;
         transform: none;
         margin: 0;
     }
@@ -334,20 +337,16 @@ h1 {
 
 @media (max-width: 600px) {
     .side-photos {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
     
-    .photo-item {
-        width: 100%;
-        max-width: 110px;
-        height: 100px;
-    }
-    
+    /* Mantener el mismo tamaño en móviles pequeños */
+    .side-photos .photo-item,
     .text-with-photo .photo-item,
     .text-content .photo-item.standalone {
-        width: 140px;
-        height: 120px;
+        width: 200px;
+        height: 180px;
     }
 }
 
@@ -360,12 +359,17 @@ h1 {
         padding: 15px;
     }
     
-    .photo-item {
-        height: 100px;
+    /* Mantener el mismo tamaño en móviles muy pequeños */
+    .side-photos .photo-item,
+    .text-with-photo .photo-item,
+    .text-content .photo-item.standalone {
+        width: 200px;
+        height: 180px;
     }
     
+    /* Mantener tamaño fijo para la imagen adicional */
     .additional-photo {
-        height: 150px;
+        height: 300px;
     }
     
     .text-content {
@@ -373,20 +377,19 @@ h1 {
     }
     
     .side-photos {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 8px;
     }
     
     .side-photos .photo-item {
-        width: 100%;
-        max-width: 100px;
-        height: 90px;
+        width: 200px;
+        height: 180px;
         font-size: 0.9rem;
     }
     
     .text-with-photo .photo-item,
     .text-content .photo-item.standalone {
-        width: 140px;
-        height: 120px;
+        width: 200px;
+        height: 180px;
     }
 }
