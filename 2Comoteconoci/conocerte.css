@@ -73,10 +73,22 @@ h1 {
     padding: 20px 0;
 }
 
-.side-photos.right {
-    align-items: flex-end;
-    height: 100%;
-    min-height: 100%;
+/* Imágenes del lado izquierdo - siempre con rotación negativa */
+.side-photos:first-of-type .photo-item {
+    transform: rotate(-3deg);
+}
+
+.side-photos:first-of-type .photo-item:hover {
+    transform: rotate(-1deg) scale(1.03);
+}
+
+/* Imágenes del lado derecho - siempre con rotación positiva */
+.side-photos:last-of-type .photo-item {
+    transform: rotate(3deg);
+}
+
+.side-photos:last-of-type .photo-item:hover {
+    transform: rotate(1deg) scale(1.03);
 }
 
 /* Tamaños fijos para todas las imágenes */
@@ -91,22 +103,9 @@ h1 {
     color: #aaa;
     font-style: italic;
     overflow: hidden;
-    transform: rotate(-3deg);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     flex-shrink: 0;
-}
-
-.photo-item:hover {
-    transform: rotate(-1deg) scale(1.03);
-}
-
-.side-photos.right .photo-item {
-    transform: rotate(3deg);
-}
-
-.side-photos.right .photo-item:hover {
-    transform: rotate(1deg) scale(1.03);
 }
 
 .text-content {
@@ -138,9 +137,8 @@ h1 {
     margin-bottom: 0;
 }
 
+/* Imágenes dentro del contenido - sin rotación */
 .text-with-photo .photo-item {
-    flex: 0 0 auto;
-    margin: 0;
     transform: none;
 }
 
@@ -159,7 +157,7 @@ h1 {
     transform: scale(1.03);
 }
 
-/* Tamaño fijo para la imagen adicional */
+/* Imagen adicional - con rotación suave */
 .additional-photo {
     width: 100%;
     height: 300px;
@@ -225,7 +223,7 @@ h1 {
     }
 }
 
-/* Media queries - manteniendo tamaños fijos en todos los dispositivos */
+/* Media queries - manteniendo rotación en todos los dispositivos */
 @media (min-width: 1200px) {
     .side-photos {
         flex: 0 0 220px;
@@ -277,17 +275,21 @@ h1 {
         flex-wrap: wrap;
     }
     
-    .side-photos.right {
-        order: 3;
-        height: auto;
+    /* Mantener rotación en móviles para imágenes laterales */
+    .side-photos:first-of-type .photo-item {
+        transform: rotate(-2deg);
     }
     
-    /* Mantener el mismo tamaño en móviles */
-    .side-photos .photo-item,
-    .text-with-photo .photo-item,
-    .text-content .photo-item.standalone {
-        width: 200px;
-        height: 180px;
+    .side-photos:first-of-type .photo-item:hover {
+        transform: rotate(-1deg) scale(1.03);
+    }
+    
+    .side-photos:last-of-type .photo-item {
+        transform: rotate(3deg);
+    }
+    
+    .side-photos:last-of-type .photo-item:hover {
+        transform: rotate(1deg) scale(1.03);
     }
     
     .container {
@@ -310,12 +312,7 @@ h1 {
     .side-photos .photo-item {
         width: 200px;
         height: 180px;
-        transform: none;
         margin: 0;
-    }
-    
-    .side-photos .photo-item:hover {
-        transform: scale(1.03);
     }
     
     .text-with-photo {
@@ -332,6 +329,11 @@ h1 {
     
     .text-with-photo .photo-item {
         margin: 0 auto;
+        transform: none;
+    }
+    
+    .text-with-photo .photo-item:hover {
+        transform: scale(1.03);
     }
 }
 

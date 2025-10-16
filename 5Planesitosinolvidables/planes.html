@@ -1,12 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Nuestras Dates</title>
+    <link rel="icon" type="image/png" href="../images/gatitoicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="planes.css">
 </head>
 <body>
-    <h1>Dates inolvidables</h1>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    
+    <div class="container">
+        <div class="content">
+            <h1>Nuestras Dates</h1>
+            
+            <div class="dates-container">
+                <!-- Primera cita: Texto - Imagen -->
+                <div class="date-item">
+                    <div class="date-text">
+                        <h3>Nuestra Primera Cita</h3>
+                        <p>Recuerdo ese día como si fuera ayer... estábamos tan nerviosos pero a la vez tan emocionados. Fuimos a ese pequeño café del centro y pasamos horas hablando, riendo y conociéndonos más.</p>
+                        <p>Me encantó cómo tu timidez inicial se fue transformando en confianza, y cómo tus ojos brillaban cuando hablabas de tus sueños. Fue el comienzo de algo hermoso.</p>
+                    </div>
+                    <div class="date-image">
+                        <div class="image-item">
+                            <span>Primera cita</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Segunda cita: Imagen - Texto -->
+                <div class="date-item reverse">
+                    <div class="date-text">
+                        <h3>Noche de Estrellas</h3>
+                        <p>Esa noche en la que fuimos a ver las estrellas fue mágica. Recuerdo cómo te abrazaba para darte calor y cómo señalábamos constelaciones en el cielo.</p>
+                        <p>Fue cuando me diste tu primera cartita y supe que esto era especial. Bajo esas estrellas prometí cuidarte siempre.</p>
+                    </div>
+                    <div class="date-image">
+                        <div class="image-item">
+                            <span>Noche estrellada</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tercera cita: Texto - Imagen -->
+                <div class="date-item">
+                    <div class="date-text">
+                        <h3>Día de Playa</h3>
+                        <p>El sol, la arena y tu sonrisa... ese día fue perfecto. Me encantó verte correr hacia el mar como una niña pequeña, tan libre y feliz.</p>
+                        <p>Construimos ese castillo de arena ridículamente grande y escribimos nuestros nombres con corazones alrededor. Eres la persona más divertida para pasar un día de playa.</p>
+                    </div>
+                    <div class="date-image">
+                        <div class="image-item">
+                            <span>Día de playa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cuarta cita: Imagen - Texto -->
+                <div class="date-item reverse">
+                    <div class="date-text">
+                        <h3>Cena Especial</h3>
+                        <p>Preparé esa cena con tanto amor... aunque no me salió todo perfecto, ver tu sonrisa cuando probaste cada platillo hizo que valiera la pena cada esfuerzo.</p>
+                        <p>Esos momentos íntimos, solo nosotros dos, conversando sobre la vida y nuestro futuro, son los que atesoro más en mi corazón.</p>
+                    </div>
+                    <div class="date-image">
+                        <div class="image-item">
+                            <span>Cena especial</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p>
+                    Florecita para ti
+                </p>
+                <div class="additional-photo">
+                    <span>Nuestra próxima cita aquí</span>
+                </div>
+            </div>
+            
+            <a href="../menucito.html" class="back-button">Volver al Inicio</a>
+        </div>
+    </div>
+
+    <script>
+        // Agregar corazones flotantes
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.querySelector('body');
+            const heartsCount = 10;
+            
+            for (let i = 0; i < heartsCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤';
+                
+                // Posición aleatoria
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const delay = Math.random() * 5;
+                
+                heart.style.left = `${left}%`;
+                heart.style.top = `${top}%`;
+                heart.style.animationDelay = `${delay}s`;
+                
+                body.appendChild(heart);
+            }
+        });
+    </script>
 </body>
 </html>

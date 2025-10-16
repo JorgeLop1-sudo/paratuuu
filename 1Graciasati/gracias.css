@@ -77,8 +77,8 @@
         }
 
         .photo-item {
-            width: 180px;
-            height: 150px;
+            width: 200px;
+            height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -202,8 +202,8 @@
             }
             
             .photo-item {
-                width: 160px;
-                height: 130px;
+                width: 200px;
+                height: 180px;
             }
         }
 
@@ -230,8 +230,8 @@
             }
             
             .photo-item {
-                width: 140px;
-                height: 120px;
+                width: 200px;
+                height: 180px;
             }
             
             .container {
@@ -263,8 +263,8 @@
                 padding: 15px;
             }
             
-            .photo-item, .additional-photo {
-                height: 120px;
+            .photo-item {
+                height: 150px;
             }
             
             .text-content {

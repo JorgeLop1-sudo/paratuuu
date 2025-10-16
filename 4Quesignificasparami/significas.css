@@ -1,0 +1,246 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffd1dc, #ffb6c1, #ff91a4);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            color: #8a4b5c;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 40px;
+            color: #d64d7e;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .text-image-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .text-image-row {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffb6c1, #ff91a4);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .text-image-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .text-block {
+            flex: 1;
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        .text-block p {
+            margin-bottom: 15px;
+        }
+
+        .image-block {
+            flex: 0 0 250px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .image-item {
+            width: 200px;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f8f8f8, #e8e8e8);
+            border-radius: 15px;
+            color: #aaa;
+            font-style: italic;
+            overflow: hidden;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .image-item:hover {
+            transform: scale(1.03);
+        }
+
+        .text-image-row .image-item {
+            transform: rotate(-3deg);
+        }
+
+        .text-image-row.reverse .image-item {
+            transform: rotate(3deg);
+        }
+
+        .text-image-row .image-item:hover {
+            transform: rotate(-1deg) scale(1.03);
+        }
+
+        .text-image-row.reverse .image-item:hover {
+            transform: rotate(1deg) scale(1.03);
+        }
+
+        .additional-photo {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f8f8f8, #e8e8e8);
+            border-radius: 15px;
+            color: #aaa;
+            font-style: italic;
+            margin-top: 20px;
+            transform: rotate(-1deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #ffb6c1, #ff91a4);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #ff6b8b;
+            opacity: 0;
+            animation: float 5s infinite ease-in-out;
+            z-index: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+                opacity: 0.7;
+            }
+        }
+
+        /* Media queries para responsividad */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .text-image-row,
+            .text-image-row.reverse {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .image-block {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+            }
+            
+            .text-block {
+                text-align: center;
+            }
+            
+            .text-image-row .image-item,
+            .text-image-row.reverse .image-item {
+                transform: none;
+            }
+            
+            .text-image-row .image-item:hover,
+            .text-image-row.reverse .image-item:hover {
+                transform: scale(1.03);
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .text-image-row {
+                padding: 15px;
+            }
+            
+            .image-item {
+                width: 160px;
+                height: 140px;
+            }
+        }

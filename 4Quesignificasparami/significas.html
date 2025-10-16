@@ -1,50 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Que significas para mi?</title>
+    <title>Lo que significas para mí</title>
+    <link rel="icon" type="image/png" href="../images/gatitoicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="significas.css">
 </head>
 <body>
-    <h1>¿Que significas para mi?</h1>
-    <p>
-        Significas mucho mas de lo que podria explicar con palabras.
-    </p>
-    <p>
-        Eres esa persona que llegó sin avisar, pero se quedó para cambiarlo todo...
-    </p>
-    <p>
-        En tan solo 4 meses significas en mi esa calma cuando va algo mal, 
-        alegría aunque sean días grises, y motivación cuando no puedo más
-        o para ser mejor persona contigo.
-    </p>
-    <p>
-        Significas hogar, porque a tu lado estoy en mi lugar seguro,
-        a tu lado siento tanta paz.
-    </p>
-    <p>
-        Significas compañia, porque desde que esto contigo jamas me he 
-        sentido solo.
-    </p>
-    <p>
-        Significas amor, y del mas bonito, del mas puro y noble, del que 
-        no se busca, del que no te lo tengo que pedir, 
-        del que solo me sabes dar tú, y del cual quiero tener para siempre.
-    </p>
-    <p>
-        Eres mi inspiración, mi razón para sonreír, mi pensamiento favorito, 
-        que siempre está al despertar y que es el ultimo antes de dormir.
-        Eres la persona que hace que mi corazón se sienta seguro, que me enseña
-        lo que es amar de verdad y lo que es ser amado, sin condiciones,
-        ni miedos.
-    </p>
-    <p>
-        Significas mucho más de lo que te imaginas princesa.
-        Eres mi niña, mi bebe, mi vida entera hecha persona.
-        Y no hay forma de agradecerle a la vida por haberte puesto 
-        en mi camino.
-        Porque desde que estás tú, todo tiene un signficado en la vida. 💗
-    </p>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    
+    <div class="container">
+        <div class="content">
+            <h1>¿Que significas para mi?</h1>
+            
+            <div class="text-image-container">
+                <!-- Primera fila: Texto - Imágenes -->
+                <div class="text-image-row">
+                    <div class="text-block">
+                        <p>
+                            Significas mucho mas de lo que podria explicar con palabras.
+                        </p>
+                        <p>
+                            Eres esa persona que llegó sin avisar, pero se quedó para cambiarlo todo...
+                        </p>
+                        <p>
+                            En tan solo 4 meses significas en mi esa calma cuando va algo mal, 
+                            alegría aunque sean días grises, y motivación cuando no puedo más
+                            o para ser mejor persona contigo.
+                        </p>
+                        <p>
+                            Significas hogar, porque a tu lado estoy en mi lugar seguro,
+                            a tu lado siento tanta paz.
+                        </p>
+                    </div>
+                    <div class="image-block">
+                        <div class="image-item">
+                            <span>Foto 1</span>
+                        </div>
+                        <div class="image-item">
+                            <span>Foto 2</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Segunda fila: Imágenes - Texto -->
+                <div class="text-image-row reverse">
+                    <div class="text-block">
+                        <p>
+                            Significas compañia, porque desde que esto contigo jamas me he 
+                            sentido solo.
+                        </p>
+                        <p>
+                            Significas amor, y del mas bonito, del mas puro y noble, del que 
+                            no se busca, del que no te lo tengo que pedir, 
+                            del que solo me sabes dar tú, y del cual quiero tener para siempre.
+                        </p>
+                        <p>
+                            Eres mi inspiración, mi razón para sonreír, mi pensamiento favorito, 
+                            que siempre está al despertar y que es el ultimo antes de dormir.
+                            Eres la persona que hace que mi corazón se sienta seguro, que me enseña
+                            lo que es amar de verdad y lo que es ser amado, sin condiciones,
+                            ni miedos.
+                        </p>
+                    </div>
+                    <div class="image-block">
+                        <div class="image-item">
+                            <span>Foto 1</span>
+                        </div>
+                        <div class="image-item">
+                            <span>Foto 2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-image-row">
+                    <div class="text-block">
+                        <p>
+                            Significas mucho más de lo que te imaginas princesa.
+                            Eres mi niña, mi bebe, mi vida entera hecha persona.
+                            Y no hay forma de agradecerle a la vida por haberte puesto 
+                            en mi camino.
+                            Porque desde que estás tú, todo tiene un signficado en la vida. 💗
+                        </p>
+                    </div>
+                </div>
+
+                <div class="additional-photo">
+                    <span>Tu foto especial aquí</span>
+                </div>
+                
+            </div>
+            
+            <a href="../menucito.html" class="back-button">Volver al Inicio</a>
+        </div>
+    </div>
+
+    <script>
+        // Agregar corazones flotantes
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.querySelector('body');
+            const heartsCount = 10;
+            
+            for (let i = 0; i < heartsCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤';
+                
+                // Posición aleatoria
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const delay = Math.random() * 5;
+                
+                heart.style.left = `${left}%`;
+                heart.style.top = `${top}%`;
+                heart.style.animationDelay = `${delay}s`;
+                
+                body.appendChild(heart);
+            }
+        });
+    </script>
 </body>
 </html>
