@@ -60,6 +60,7 @@ h1 {
     align-items: stretch;
     gap: 30px;
     margin-bottom: 30px;
+    min-height: 800px;
 }
 
 .side-photos {
@@ -67,18 +68,20 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    gap: 40px; /* Espaciado aumentado para mejor distribución vertical */
-    padding: 20px 0; /* Padding para mejor espaciado */
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 0;
 }
 
 .side-photos.right {
     align-items: flex-end;
+    height: 100%;
+    min-height: 100%;
 }
 
 .photo-item {
-    width: 180px; /* Tamaño original mantenido */
-    height: 150px; /* Tamaño original mantenido */
+    width: 180px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,6 +93,7 @@ h1 {
     transform: rotate(-3deg);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    flex-shrink: 0;
 }
 
 .photo-item:hover {
@@ -114,14 +118,13 @@ h1 {
     line-height: 1.6;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .text-content p {
     margin-bottom: 20px;
 }
 
-/* Contenedor para texto e imagen lado a lado */
 .text-with-photo {
     display: flex;
     align-items: flex-start;
@@ -144,7 +147,6 @@ h1 {
     transform: scale(1.03);
 }
 
-/* Para las fotos que deben ir solas (sin texto al lado) */
 .text-content .photo-item.standalone {
     margin: 20px auto;
     transform: none;
@@ -157,7 +159,7 @@ h1 {
 }
 
 .additional-photo {
-    height: 300px; /* Tamaño mantenido */
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -197,7 +199,6 @@ h1 {
     z-index: 0;
 }
 
-/* Animaciones */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -220,13 +221,25 @@ h1 {
     }
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
+@media (min-width: 1200px) {
     .side-photos {
-        flex: 0 0 180px;
+        flex: 0 0 220px;
+        justify-content: space-around;
     }
     
-    .photo-item {
+    .side-photos .photo-item {
+        width: 200px;
+        height: 170px;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .side-photos {
+        flex: 0 0 180px;
+        justify-content: space-between;
+    }
+    
+    .side-photos .photo-item {
         width: 160px;
         height: 130px;
     }
@@ -246,6 +259,7 @@ h1 {
     .main-content {
         flex-direction: column;
         gap: 20px;
+        min-height: auto;
     }
     
     .side-photos {
@@ -259,6 +273,7 @@ h1 {
     
     .side-photos.right {
         order: 3;
+        height: auto;
     }
     
     .photo-item {
@@ -277,10 +292,9 @@ h1 {
     }
     
     .additional-photo {
-        height: 200px; /* Tamaño reducido solo para móviles */
+        height: 200px;
     }
     
-    /* Para las fotos en side-photos - distribución de 3 en 3 en móviles */
     .side-photos {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -301,7 +315,6 @@ h1 {
         transform: scale(1.03);
     }
     
-    /* En móviles, las fotos dentro del texto van debajo */
     .text-with-photo {
         flex-direction: column;
         align-items: center;
@@ -352,7 +365,7 @@ h1 {
     }
     
     .additional-photo {
-        height: 150px; /* Tamaño reducido para móviles muy pequeños */
+        height: 150px;
     }
     
     .text-content {
@@ -375,33 +388,5 @@ h1 {
     .text-content .photo-item.standalone {
         width: 140px;
         height: 120px;
-    }
-}
-
-/* Mejoras para pantallas grandes - mejor distribución vertical */
-@media (min-width: 769px) {
-    .side-photos {
-        flex: 0 0 200px; /* Tamaño original mantenido */
-        gap: 35px; /* Espaciado aumentado para mejor distribución */
-        justify-content: flex-start;
-        padding: 15px 0;
-    }
-    
-    .side-photos .photo-item {
-        width: 180px; /* Tamaño original mantenido */
-        height: 150px; /* Tamaño original mantenido */
-        flex-shrink: 0;
-    }
-    
-    /* Asegurar que el contenedor ocupe toda la altura disponible */
-    .side-photos.right {
-        height: auto;
-        min-height: 100%;
-    }
-    
-    /* Ajustar el alto del main-content para que las fotos se distribuyan mejor */
-    .main-content {
-        align-items: flex-start;
-        min-height: 800px; /* Altura mínima para mejor distribución */
     }
 }
