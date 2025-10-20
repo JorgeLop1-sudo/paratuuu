@@ -23,7 +23,6 @@
     </div>
     
     <div class="links-grid">
-        <!-- Fila 1: Link - Foto - Link -->
         <div class="link-card" data-page="gracias.html">
             <div class="text-card">
                 <a href="#" data-page="gracias.html">Gracias a ti</a>
@@ -42,7 +41,6 @@
             </div>
         </div>
         
-        <!-- Fila 2: Foto - Link - Foto -->
         <div class="link-card">
             <div class="photo-placeholder">
                 <span>Tu foto aquí</span>
@@ -61,7 +59,6 @@
             </div>
         </div>
         
-        <!-- Fila 3: Link - Foto - Link -->
         <div class="link-card" data-page="significas.html">
             <div class="text-card">
                 <a href="#" data-page="significas.html">¿Qué significas para mí?</a>
@@ -80,7 +77,6 @@
             </div>
         </div>
         
-        <!-- Fila 4: Foto - Link - Foto -->
         <div class="link-card">
             <div class="photo-placeholder">
                 <span>Tu foto aquí</span>
@@ -109,7 +105,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
-            // Configuración de enlaces - Versión mejorada para toda la tarjeta
             const pageRedirects = {
                 'gracias.html': '1Graciasati/gracias.html',
                 'conocerte.html': '2Comoteconoci/conocerte.html', 
@@ -119,7 +114,6 @@
                 'futuro.html': '6Elfuturoatulado/futuro.html'
             };
 
-            // Hacer toda la tarjeta clickeable
             const linkCards = document.querySelectorAll('.link-card[data-page]');
 
             linkCards.forEach(card => {
@@ -128,15 +122,12 @@
                 card.style.cursor = 'pointer';
                 
                 card.addEventListener('click', function(e) {
-                    // Prevenir que se active dos veces si se hace clic en el enlace
                     if (e.target.tagName === 'A') {
                         e.preventDefault();
                     }
                     
-                    // Efecto visual al hacer clic
                     this.style.transform = 'scale(0.95)';
                     
-                    // Redireccionar después de la animación
                     setTimeout(() => {
                         if (page && pageRedirects[page]) {
                             window.location.href = pageRedirects[page];
@@ -146,12 +137,11 @@
                     }, 300);
                 });
 
-                // También mantener funcionalidad individual del enlace por si acaso
                 const link = card.querySelector('.text-card a');
                 if (link) {
                     link.addEventListener('click', function(e) {
                         e.preventDefault();
-                        card.click(); // Disparar el evento de la tarjeta completa
+                        card.click(); 
                     });
                 }
             });

@@ -10,24 +10,23 @@
 
 </head>
 <body>
-    <!-- Carrusel para móviles (arriba) -->
+    
     <div class="mobile-carousel" id="mobileCarouselTop">
         <div class="mobile-carousel-track" id="mobileTrackTop">
-            <!-- Las imágenes se insertarán con JavaScript -->
+            
         </div>
     </div>
 
     <div class="main-container">
-        <!-- Carrusel para PC (lado izquierdo) -->
+  
         <div class="carousel-container">
             <div class="carousel-side">
                 <div class="carousel-track" id="leftCarouselTrack">
-                    <!-- Las imágenes se insertarán con JavaScript -->
+                    
                 </div>
             </div>
         </div>
 
-        <!-- Contenido principal -->
         <div class="container">
             <div class="content">
                 <h1>Acceso bonito</h1>
@@ -45,25 +44,24 @@
             </div>
         </div>
 
-        <!-- Carrusel para PC (lado derecho) -->
         <div class="carousel-container">
             <div class="carousel-side">
                 <div class="carousel-track" id="rightCarouselTrack">
-                    <!-- Las imágenes se insertarán con JavaScript -->
+                    
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Carrusel para móviles (abajo) -->
+    
     <div class="mobile-carousel" id="mobileCarouselBottom">
         <div class="mobile-carousel-track" id="mobileTrackBottom">
-            <!-- Las imágenes se insertarán con JavaScript -->
+      
         </div>
     </div>
 
     <script>
-        // Datos de las imágenes (reemplaza con tus propias imágenes)
+        
         const images = [
             { src: "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/9db5/live/48fd9010-c1c1-11ee-9519-97453607d43e.jpg.webp" },
             { src: "https://img.freepik.com/vector-gratis/nina-feliz-mariposa_1450-103.jpg?semt=ais_hybrid&w=740&q=80" },
@@ -83,7 +81,7 @@
             { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu-aDkoxk4j_jIJh8E41nJAxg6WiM0e_2ipg&s" }
         ];
 
-        // Función para crear elementos de imagen para PC
+       
         function createImageElement(imageData) {
             const item = document.createElement('div');
             item.className = 'carousel-item';
@@ -98,7 +96,7 @@
             return item;
         }
 
-        // Función para crear elementos de imagen para móviles (solo imagen)
+       
         function createMobileImageElement(imageData) {
             const container = document.createElement('div');
             container.className = 'mobile-image-container';
@@ -113,7 +111,7 @@
             return container;
         }
 
-        // Función para crear filas de imágenes para móviles
+       
         function createMobileRow(images) {
             const row = document.createElement('div');
             row.className = 'mobile-carousel-item';
@@ -125,27 +123,26 @@
             return row;
         }
 
-        // Inicializar carruseles para PC
+   
         function initDesktopCarousels() {
             const leftTrack = document.getElementById('leftCarouselTrack');
             const rightTrack = document.getElementById('rightCarouselTrack');
             
-            // Dividir las imágenes entre los dos carruseles
+           
             const half = Math.ceil(images.length / 2);
             const leftImages = images.slice(0, half);
             const rightImages = images.slice(half);
             
-            // Agregar imágenes al carrusel izquierdo
+           
             leftImages.forEach(imageData => {
                 leftTrack.appendChild(createImageElement(imageData));
             });
-            
-            // Agregar imágenes al carrusel derecho
+          
             rightImages.forEach(imageData => {
                 rightTrack.appendChild(createImageElement(imageData));
             });
             
-            // Duplicar las imágenes para crear un efecto de bucle infinito
+            
             leftImages.forEach(imageData => {
                 leftTrack.appendChild(createImageElement(imageData));
             });
@@ -154,16 +151,15 @@
                 rightTrack.appendChild(createImageElement(imageData));
             });
             
-            // Animar carruseles para PC
+     
             animateDesktopCarousels();
         }
 
-        // Inicializar carruseles para móviles
+       
         function initMobileCarousels() {
             const topTrack = document.getElementById('mobileTrackTop');
             const bottomTrack = document.getElementById('mobileTrackBottom');
             
-            // Crear filas para el carrusel superior (3 imágenes por fila)
             for (let i = 0; i < images.length; i += 3) {
                 const rowImages = images.slice(i, i + 3);
                 if (rowImages.length > 0) {
@@ -171,7 +167,6 @@
                 }
             }
             
-            // Crear filas para el carrusel inferior (3 imágenes por fila)
             for (let i = 0; i < images.length; i += 3) {
                 const rowImages = images.slice(i, i + 3);
                 if (rowImages.length > 0) {
@@ -179,7 +174,6 @@
                 }
             }
             
-            // Duplicar las filas para crear un efecto de bucle infinito
             const topRows = Array.from(topTrack.children);
             topRows.forEach(row => {
                 const clone = row.cloneNode(true);
@@ -192,17 +186,14 @@
                 bottomTrack.appendChild(clone);
             });
             
-            // Animar carruseles para móviles
             animateMobileCarousels();
         }
 
-        // Animar carruseles para PC
         function animateDesktopCarousels() {
             const leftTrack = document.getElementById('leftCarouselTrack');
             const rightTrack = document.getElementById('rightCarouselTrack');
             
-            // Calcular la altura total de un conjunto de imágenes
-            const itemHeight = 170; // altura aproximada de cada elemento (sin texto)
+            const itemHeight = 170; 
             const trackHeight = (images.length / 2) * itemHeight;
             
             let leftPosition = 0;
@@ -212,7 +203,6 @@
                 leftPosition -= 2;
                 rightPosition -= 2;
                 
-                // Reiniciar posición cuando llegue al final
                 if (Math.abs(leftPosition) >= trackHeight) {
                     leftPosition = 0;
                 }
@@ -225,13 +215,11 @@
             }, 30);
         }
 
-        // Animar carruseles para móviles - CORREGIDO
         function animateMobileCarousels() {
             const topTrack = document.getElementById('mobileTrackTop');
             const bottomTrack = document.getElementById('mobileTrackBottom');
             
-            // Calcular el ancho total de un conjunto de filas
-            const itemWidth = 500; // ancho aproximado de cada fila
+            const itemWidth = 500; 
             const trackWidth = (Math.ceil(images.length / 3)) * itemWidth;
             
             let topPosition = 0;
@@ -241,26 +229,19 @@
                 topPosition -= 2;
                 bottomPosition -= 2;
                 
-                // Reiniciar posición cuando llegue al final de la primera copia
                 if (Math.abs(topPosition) >= trackWidth) {
                     topPosition = 0;
-                    // Reposicionar sin transición para un bucle perfecto
                     topTrack.style.transition = 'none';
                     topTrack.style.transform = `translateX(${topPosition}px)`;
-                    // Forzar reflow
                     void topTrack.offsetWidth;
-                    // Restaurar transición
                     topTrack.style.transition = 'transform 0.7s ease-in-out';
                 }
                 
                 if (Math.abs(bottomPosition) >= trackWidth) {
                     bottomPosition = 0;
-                    // Reposicionar sin transición para un bucle perfecto
                     bottomTrack.style.transition = 'none';
                     bottomTrack.style.transform = `translateX(${bottomPosition}px)`;
-                    // Forzar reflow
                     void bottomTrack.offsetWidth;
-                    // Restaurar transición
                     bottomTrack.style.transition = 'transform 0.7s ease-in-out';
                 }
                 
@@ -269,13 +250,11 @@
             }, 30);
         }
 
-        // Inicializar todos los carruseles
         function initCarousels() {
             initDesktopCarousels();
             initMobileCarousels();
         }
 
-        // Lógica del formulario de acceso
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -299,7 +278,6 @@
             }
         });
         
-        // Crear corazones flotantes
         function createHearts() {
             const container = document.querySelector('.container');
             const heartsCount = 15;
@@ -316,7 +294,6 @@
         }
    
         
-        // Inicializar cuando la página cargue
         window.addEventListener('load', function() {
             createHearts();
             initCarousels();
