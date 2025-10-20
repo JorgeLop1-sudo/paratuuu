@@ -67,7 +67,7 @@
             gap: 20px;
             position: absolute;
             top: 15px;
-            transition: transform 1s ease-in-out;
+            transition: transform 0.7s ease-in-out; /* Animación más rápida */
         }
 
         .carousel-item {
@@ -237,7 +237,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            transition: transform 1s ease-in-out;
+            transition: transform 0.7s ease-in-out; /* Animación más rápida */
             height: 100%;
         }
 
@@ -563,8 +563,8 @@
             let rightPosition = 0;
             
             setInterval(() => {
-                leftPosition -= 1;
-                rightPosition -= 1;
+                leftPosition -= 2; // Aumentado de 1 a 2 para mayor velocidad
+                rightPosition -= 2; // Aumentado de 1 a 2 para mayor velocidad
                 
                 // Reiniciar posición cuando llegue al final
                 if (Math.abs(leftPosition) >= trackHeight) {
@@ -576,7 +576,7 @@
                 
                 leftTrack.style.transform = `translateY(${leftPosition}px)`;
                 rightTrack.style.transform = `translateY(${rightPosition}px)`;
-            }, 50);
+            }, 30); // Reducido de 50ms a 30ms para mayor velocidad
         }
 
         // Animar carruseles para móviles
@@ -592,8 +592,8 @@
             let bottomPosition = 0;
             
             setInterval(() => {
-                topPosition -= 1;
-                bottomPosition -= 1;
+                topPosition -= 2; // Aumentado de 1 a 2 para mayor velocidad
+                bottomPosition -= 2; // Aumentado de 1 a 2 para mayor velocidad
                 
                 // Reiniciar posición cuando llegue al final
                 if (Math.abs(topPosition) >= trackWidth) {
@@ -605,7 +605,7 @@
                 
                 topTrack.style.transform = `translateX(${topPosition}px)`;
                 bottomTrack.style.transform = `translateX(${bottomPosition}px)`;
-            }, 50);
+            }, 30); // Reducido de 50ms a 30ms para mayor velocidad
         }
 
         // Inicializar todos los carruseles
