@@ -67,7 +67,7 @@
             gap: 20px;
             position: absolute;
             top: 15px;
-            transition: transform 0.7s ease-in-out; /* Animación más rápida */
+            transition: transform 0.7s ease-in-out;
         }
 
         .carousel-item {
@@ -219,7 +219,7 @@
             z-index: 0;
         }
 
-        /* Carrusel para móviles - Solo imágenes cuadradas */
+        /* Carrusel para móviles - Corregido */
         .mobile-carousel {
             display: none;
             width: 100%;
@@ -229,7 +229,7 @@
             overflow: hidden;
             border-radius: 20px;
             background-color: transparent;
-            height: 170px; /* Aumentado para acomodar imágenes de 150px */
+            height: 170px;
         }
 
         .mobile-carousel-track {
@@ -237,7 +237,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            transition: transform 0.7s ease-in-out; /* Animación más rápida */
+            transition: transform 0.7s ease-in-out;
             height: 100%;
         }
 
@@ -261,7 +261,7 @@
 
         .mobile-carousel-image {
             width: 100%;
-            height: 150px; /* Mismo tamaño que en PC */
+            height: 150px;
             object-fit: cover;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -320,11 +320,11 @@
             }
             
             .mobile-carousel {
-                height: 170px; /* Mantener altura para imágenes de 150px */
+                height: 170px;
             }
             
             .mobile-carousel-image {
-                height: 150px; /* Mantener tamaño igual que en PC */
+                height: 150px;
             }
         }
 
@@ -338,12 +338,12 @@
             }
             
             .mobile-carousel {
-                height: 170px; /* Mantener altura para imágenes de 150px */
+                height: 170px;
                 margin-bottom: 15px;
             }
             
             .mobile-carousel-image {
-                height: 150px; /* Mantener tamaño igual que en PC */
+                height: 150px;
             }
             
             .mobile-carousel-item {
@@ -354,11 +354,11 @@
 
         @media (max-width: 360px) {
             .mobile-carousel {
-                height: 170px; /* Mantener altura para imágenes de 150px */
+                height: 170px;
             }
             
             .mobile-carousel-image {
-                height: 150px; /* Mantener tamaño igual que en PC */
+                height: 150px;
             }
         }
     </style>
@@ -517,20 +517,20 @@
             const topTrack = document.getElementById('mobileTrackTop');
             const bottomTrack = document.getElementById('mobileTrackBottom');
             
-            // Dividir las imágenes en grupos de 3 para crear filas
-            const topImages = images.slice(0, 8);
-            const bottomImages = images.slice(8);
-            
             // Crear filas para el carrusel superior (3 imágenes por fila)
-            for (let i = 0; i < topImages.length; i += 3) {
-                const rowImages = topImages.slice(i, i + 3);
-                topTrack.appendChild(createMobileRow(rowImages));
+            for (let i = 0; i < images.length; i += 3) {
+                const rowImages = images.slice(i, i + 3);
+                if (rowImages.length > 0) {
+                    topTrack.appendChild(createMobileRow(rowImages));
+                }
             }
             
             // Crear filas para el carrusel inferior (3 imágenes por fila)
-            for (let i = 0; i < bottomImages.length; i += 3) {
-                const rowImages = bottomImages.slice(i, i + 3);
-                bottomTrack.appendChild(createMobileRow(rowImages));
+            for (let i = 0; i < images.length; i += 3) {
+                const rowImages = images.slice(i, i + 3);
+                if (rowImages.length > 0) {
+                    bottomTrack.appendChild(createMobileRow(rowImages));
+                }
             }
             
             // Duplicar las filas para crear un efecto de bucle infinito
@@ -563,8 +563,8 @@
             let rightPosition = 0;
             
             setInterval(() => {
-                leftPosition -= 2; // Aumentado de 1 a 2 para mayor velocidad
-                rightPosition -= 2; // Aumentado de 1 a 2 para mayor velocidad
+                leftPosition -= 2;
+                rightPosition -= 2;
                 
                 // Reiniciar posición cuando llegue al final
                 if (Math.abs(leftPosition) >= trackHeight) {
@@ -576,10 +576,10 @@
                 
                 leftTrack.style.transform = `translateY(${leftPosition}px)`;
                 rightTrack.style.transform = `translateY(${rightPosition}px)`;
-            }, 30); // Reducido de 50ms a 30ms para mayor velocidad
+            }, 30);
         }
 
-        // Animar carruseles para móviles
+        // Animar carruseles para móviles - CORREGIDO
         function animateMobileCarousels() {
             const topTrack = document.getElementById('mobileTrackTop');
             const bottomTrack = document.getElementById('mobileTrackBottom');
@@ -592,20 +592,35 @@
             let bottomPosition = 0;
             
             setInterval(() => {
-                topPosition -= 2; // Aumentado de 1 a 2 para mayor velocidad
-                bottomPosition -= 2; // Aumentado de 1 a 2 para mayor velocidad
+                topPosition -= 2;
+                bottomPosition -= 2;
                 
-                // Reiniciar posición cuando llegue al final
+                // Reiniciar posición cuando llegue al final de la primera copia
                 if (Math.abs(topPosition) >= trackWidth) {
                     topPosition = 0;
+                    // Reposicionar sin transición para un bucle perfecto
+                    topTrack.style.transition = 'none';
+                    topTrack.style.transform = `translateX(${topPosition}px)`;
+                    // Forzar reflow
+                    void topTrack.offsetWidth;
+                    // Restaurar transición
+                    topTrack.style.transition = 'transform 0.7s ease-in-out';
                 }
+                
                 if (Math.abs(bottomPosition) >= trackWidth) {
                     bottomPosition = 0;
+                    // Reposicionar sin transición para un bucle perfecto
+                    bottomTrack.style.transition = 'none';
+                    bottomTrack.style.transform = `translateX(${bottomPosition}px)`;
+                    // Forzar reflow
+                    void bottomTrack.offsetWidth;
+                    // Restaurar transición
+                    bottomTrack.style.transition = 'transform 0.7s ease-in-out';
                 }
                 
                 topTrack.style.transform = `translateX(${topPosition}px)`;
                 bottomTrack.style.transform = `translateX(${bottomPosition}px)`;
-            }, 30); // Reducido de 50ms a 30ms para mayor velocidad
+            }, 30);
         }
 
         // Inicializar todos los carruseles
