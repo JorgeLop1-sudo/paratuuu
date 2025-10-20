@@ -7,26 +7,275 @@
     <link rel="icon" type="image/png" href="images/gatitoicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
+
 </head>
 <body>
-    <div class="container">
-        <div class="content">
-            <h1>Acceso bonito</h1>
-            <p class="subtitle">Ingresa la contraseña para continuar 💞</p>
-            
-            <form class="login-form" id="loginForm">
-                <div class="form-group">
-                    <label for="password">Contraseña:</label>
-                    <input type="password" id="password" name="password" placeholder="Escribe aquí la contraseña" required>
+    <!-- Carrusel para móviles (arriba) -->
+    <div class="mobile-carousel" id="mobileCarouselTop">
+        <div class="mobile-carousel-track" id="mobileTrackTop">
+            <!-- Las imágenes se insertarán con JavaScript -->
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- Carrusel para PC (lado izquierdo) -->
+        <div class="carousel-container">
+            <div class="carousel-side">
+                <div class="carousel-track" id="leftCarouselTrack">
+                    <!-- Las imágenes se insertarán con JavaScript -->
                 </div>
-                <button type="submit" class="submit-btn">Acceder</button>
-            </form>
-            
-            <div id="message" class="message"></div>
+            </div>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="container">
+            <div class="content">
+                <h1>Acceso bonito</h1>
+                <p class="subtitle">Ingresa la contraseña para continuar 💞</p>
+                
+                <form class="login-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="password">Contraseña:</label>
+                        <input type="password" id="password" name="password" placeholder="Escribe aquí la contraseña" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Acceder</button>
+                </form>
+                
+                <div id="message" class="message"></div>
+            </div>
+        </div>
+
+        <!-- Carrusel para PC (lado derecho) -->
+        <div class="carousel-container">
+            <div class="carousel-side">
+                <div class="carousel-track" id="rightCarouselTrack">
+                    <!-- Las imágenes se insertarán con JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carrusel para móviles (abajo) -->
+    <div class="mobile-carousel" id="mobileCarouselBottom">
+        <div class="mobile-carousel-track" id="mobileTrackBottom">
+            <!-- Las imágenes se insertarán con JavaScript -->
         </div>
     </div>
 
     <script>
+        // Datos de las imágenes (reemplaza con tus propias imágenes)
+        const images = [
+            { src: "https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/9db5/live/48fd9010-c1c1-11ee-9519-97453607d43e.jpg.webp" },
+            { src: "https://img.freepik.com/vector-gratis/nina-feliz-mariposa_1450-103.jpg?semt=ais_hybrid&w=740&q=80" },
+            { src: "https://images.pexels.com/photos/1526713/pexels-photo-1526713.jpeg?cs=srgb&dl=pexels-francesco-ungaro-1526713.jpg&fm=jpg" },
+            { src: "https://i.blogs.es/8256d5/gpu-openai-chatgpt/500_333.jpeg" },
+            { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVring1Y4Initgg49VAm4-7qdT4-UvU05Rww&s" },
+            { src: "https://images.pexels.com/photos/8542167/pexels-photo-8542167.jpeg?auto=compress&cs=tinysrgb&h=300&w=300&fit=crop&crop=focalpoint&dpr=1" },
+            { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT86S_ZlKylXOd3eTqAW5KXxkngeiP-uUxtNA&s" },
+            { src: "https://img.imagenescool.com/ic/hola/hola_048.jpg" },
+            { src: "https://www.shutterstock.com/image-vector/illustration-real-human-heart-600nw-2482198365.jpg" },
+            { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvt1WmeC3FsJqwJzWCiHrhr0FsvAKBVZBirA&s" },
+            { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqrIaOoNLKb_PGfc_nS4s3IVBC8x7x9nYOqQ&s" },
+            { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3UkMXPHdEzFV92XgBzgcqT0arRMMCGp8bQg&s" },
+            { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROFDbJFzBrDyZaCOzb4oa0G7UtuDAZFTr_Cw&s" },
+            { src: "https://media.es.wired.com/photos/673e12c0eeb314108ec5cb27/1:1/w_2000,h_2000,c_limit/4%20imagenes%20del%20sol.jpg" },
+            { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvS8XRlRIzQ_lvu0EZy88MrE-UkMYfDTPjYQ&s" },
+            { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu-aDkoxk4j_jIJh8E41nJAxg6WiM0e_2ipg&s" }
+        ];
+
+        // Función para crear elementos de imagen para PC
+        function createImageElement(imageData) {
+            const item = document.createElement('div');
+            item.className = 'carousel-item';
+            
+            const img = document.createElement('img');
+            img.src = imageData.src;
+            img.alt = "";
+            img.className = 'carousel-image';
+            
+            item.appendChild(img);
+            
+            return item;
+        }
+
+        // Función para crear elementos de imagen para móviles (solo imagen)
+        function createMobileImageElement(imageData) {
+            const container = document.createElement('div');
+            container.className = 'mobile-image-container';
+            
+            const img = document.createElement('img');
+            img.src = imageData.src;
+            img.alt = "";
+            img.className = 'mobile-carousel-image';
+            
+            container.appendChild(img);
+            
+            return container;
+        }
+
+        // Función para crear filas de imágenes para móviles
+        function createMobileRow(images) {
+            const row = document.createElement('div');
+            row.className = 'mobile-carousel-item';
+            
+            images.forEach(imageData => {
+                row.appendChild(createMobileImageElement(imageData));
+            });
+            
+            return row;
+        }
+
+        // Inicializar carruseles para PC
+        function initDesktopCarousels() {
+            const leftTrack = document.getElementById('leftCarouselTrack');
+            const rightTrack = document.getElementById('rightCarouselTrack');
+            
+            // Dividir las imágenes entre los dos carruseles
+            const half = Math.ceil(images.length / 2);
+            const leftImages = images.slice(0, half);
+            const rightImages = images.slice(half);
+            
+            // Agregar imágenes al carrusel izquierdo
+            leftImages.forEach(imageData => {
+                leftTrack.appendChild(createImageElement(imageData));
+            });
+            
+            // Agregar imágenes al carrusel derecho
+            rightImages.forEach(imageData => {
+                rightTrack.appendChild(createImageElement(imageData));
+            });
+            
+            // Duplicar las imágenes para crear un efecto de bucle infinito
+            leftImages.forEach(imageData => {
+                leftTrack.appendChild(createImageElement(imageData));
+            });
+            
+            rightImages.forEach(imageData => {
+                rightTrack.appendChild(createImageElement(imageData));
+            });
+            
+            // Animar carruseles para PC
+            animateDesktopCarousels();
+        }
+
+        // Inicializar carruseles para móviles
+        function initMobileCarousels() {
+            const topTrack = document.getElementById('mobileTrackTop');
+            const bottomTrack = document.getElementById('mobileTrackBottom');
+            
+            // Crear filas para el carrusel superior (3 imágenes por fila)
+            for (let i = 0; i < images.length; i += 3) {
+                const rowImages = images.slice(i, i + 3);
+                if (rowImages.length > 0) {
+                    topTrack.appendChild(createMobileRow(rowImages));
+                }
+            }
+            
+            // Crear filas para el carrusel inferior (3 imágenes por fila)
+            for (let i = 0; i < images.length; i += 3) {
+                const rowImages = images.slice(i, i + 3);
+                if (rowImages.length > 0) {
+                    bottomTrack.appendChild(createMobileRow(rowImages));
+                }
+            }
+            
+            // Duplicar las filas para crear un efecto de bucle infinito
+            const topRows = Array.from(topTrack.children);
+            topRows.forEach(row => {
+                const clone = row.cloneNode(true);
+                topTrack.appendChild(clone);
+            });
+            
+            const bottomRows = Array.from(bottomTrack.children);
+            bottomRows.forEach(row => {
+                const clone = row.cloneNode(true);
+                bottomTrack.appendChild(clone);
+            });
+            
+            // Animar carruseles para móviles
+            animateMobileCarousels();
+        }
+
+        // Animar carruseles para PC
+        function animateDesktopCarousels() {
+            const leftTrack = document.getElementById('leftCarouselTrack');
+            const rightTrack = document.getElementById('rightCarouselTrack');
+            
+            // Calcular la altura total de un conjunto de imágenes
+            const itemHeight = 170; // altura aproximada de cada elemento (sin texto)
+            const trackHeight = (images.length / 2) * itemHeight;
+            
+            let leftPosition = 0;
+            let rightPosition = 0;
+            
+            setInterval(() => {
+                leftPosition -= 2;
+                rightPosition -= 2;
+                
+                // Reiniciar posición cuando llegue al final
+                if (Math.abs(leftPosition) >= trackHeight) {
+                    leftPosition = 0;
+                }
+                if (Math.abs(rightPosition) >= trackHeight) {
+                    rightPosition = 0;
+                }
+                
+                leftTrack.style.transform = `translateY(${leftPosition}px)`;
+                rightTrack.style.transform = `translateY(${rightPosition}px)`;
+            }, 30);
+        }
+
+        // Animar carruseles para móviles - CORREGIDO
+        function animateMobileCarousels() {
+            const topTrack = document.getElementById('mobileTrackTop');
+            const bottomTrack = document.getElementById('mobileTrackBottom');
+            
+            // Calcular el ancho total de un conjunto de filas
+            const itemWidth = 500; // ancho aproximado de cada fila
+            const trackWidth = (Math.ceil(images.length / 3)) * itemWidth;
+            
+            let topPosition = 0;
+            let bottomPosition = 0;
+            
+            setInterval(() => {
+                topPosition -= 2;
+                bottomPosition -= 2;
+                
+                // Reiniciar posición cuando llegue al final de la primera copia
+                if (Math.abs(topPosition) >= trackWidth) {
+                    topPosition = 0;
+                    // Reposicionar sin transición para un bucle perfecto
+                    topTrack.style.transition = 'none';
+                    topTrack.style.transform = `translateX(${topPosition}px)`;
+                    // Forzar reflow
+                    void topTrack.offsetWidth;
+                    // Restaurar transición
+                    topTrack.style.transition = 'transform 0.7s ease-in-out';
+                }
+                
+                if (Math.abs(bottomPosition) >= trackWidth) {
+                    bottomPosition = 0;
+                    // Reposicionar sin transición para un bucle perfecto
+                    bottomTrack.style.transition = 'none';
+                    bottomTrack.style.transform = `translateX(${bottomPosition}px)`;
+                    // Forzar reflow
+                    void bottomTrack.offsetWidth;
+                    // Restaurar transición
+                    bottomTrack.style.transition = 'transform 0.7s ease-in-out';
+                }
+                
+                topTrack.style.transform = `translateX(${topPosition}px)`;
+                bottomTrack.style.transform = `translateX(${bottomPosition}px)`;
+            }, 30);
+        }
+
+        // Inicializar todos los carruseles
+        function initCarousels() {
+            initDesktopCarousels();
+            initMobileCarousels();
+        }
+
+        // Lógica del formulario de acceso
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -36,24 +285,21 @@
             const correctPassword = "230825"; 
             
             if (password === correctPassword) {
-                
                 window.location.href = "menucito.html";
             } else {
                 messageElement.textContent = "Contraseña incorrectaaaa. Inténta otra vez.👀";
                 messageElement.className = "message error";
                 messageElement.style.display = "block";
                 
-   
                 document.getElementById('password').value = "";
                 
-  
                 setTimeout(() => {
                     messageElement.style.display = "none";
                 }, 3000);
             }
         });
         
-  
+        // Crear corazones flotantes
         function createHearts() {
             const container = document.querySelector('.container');
             const heartsCount = 15;
@@ -69,7 +315,12 @@
             }
         }
    
-        window.addEventListener('load', createHearts);
+        
+        // Inicializar cuando la página cargue
+        window.addEventListener('load', function() {
+            createHearts();
+            initCarousels();
+        });
     </script>
 </body>
 </html>
