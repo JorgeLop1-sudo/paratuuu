@@ -229,7 +229,7 @@
             overflow: hidden;
             border-radius: 20px;
             background-color: transparent;
-            height: 140px;
+            height: 170px; /* Aumentado para acomodar imágenes de 150px */
         }
 
         .mobile-carousel-track {
@@ -260,8 +260,8 @@
         }
 
         .mobile-carousel-image {
-            width: 80px;
-            height: 80px;
+            width: 100%;
+            height: 150px; /* Mismo tamaño que en PC */
             object-fit: cover;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -320,12 +320,11 @@
             }
             
             .mobile-carousel {
-                height: 130px;
+                height: 170px; /* Mantener altura para imágenes de 150px */
             }
             
             .mobile-carousel-image {
-                width: 75px;
-                height: 75px;
+                height: 150px; /* Mantener tamaño igual que en PC */
             }
         }
 
@@ -339,13 +338,12 @@
             }
             
             .mobile-carousel {
-                height: 120px;
+                height: 170px; /* Mantener altura para imágenes de 150px */
                 margin-bottom: 15px;
             }
             
             .mobile-carousel-image {
-                width: 70px;
-                height: 70px;
+                height: 150px; /* Mantener tamaño igual que en PC */
             }
             
             .mobile-carousel-item {
@@ -356,12 +354,11 @@
 
         @media (max-width: 360px) {
             .mobile-carousel {
-                height: 110px;
+                height: 170px; /* Mantener altura para imágenes de 150px */
             }
             
             .mobile-carousel-image {
-                width: 65px;
-                height: 65px;
+                height: 150px; /* Mantener tamaño igual que en PC */
             }
         }
     </style>
